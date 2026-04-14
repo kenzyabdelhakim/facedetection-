@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Model artifacts (too large for git)
+outputs/artifacts/*.pth
+outputs/artifacts/*.onnx
+outputs/artifacts/*.onnx.data
+
+# Dataset images
+outputs/raw_data/
+outputs/processed_data/
+
+# Evaluation plots (regenerated on training)
+outputs/evaluation/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store

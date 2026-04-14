@@ -1,0 +1,14 @@
+torch
+torchvision
+transformers
+datasets
+scikit-learn
+matplotlib
+tqdm
+pillow
+numpy
+opencv-python
+kaggle
+opendatasets
+onnx
+onnxruntime
