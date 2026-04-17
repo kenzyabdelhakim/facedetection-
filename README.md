@@ -1,146 +1,124 @@
-# Skin Type Detection with Vision Transformer (ViT)
+# Skin Analysis with Multi-Task Vision Transformer (ViT)
 
-This project is a complete end-to-end image classification pipeline for skin type detection using a pretrained Vision Transformer (ViT) model from Hugging Face.
+Multi-task image classification pipeline that detects **skin type** AND **skin conditions** simultaneously using a shared ViT backbone.
 
-Dataset used: `dima806/skin-types-image-detection-vit` from Kaggle.
+## Output Format
+
+```json
+{
+  "skin_type": "Oily",
+  "skin_type_confidence": 0.93,
+  "issues": ["Acne", "Large Pores"],
+  "issue_scores": {
+    "acne": 0.87,
+    "dark_spots": 0.12,
+    "wrinkles": 0.05,
+    "redness": 0.34,
+    "large_pores": 0.78
+  }
+}
+```
+
+## Model Architecture
+
+```
+                    ┌──────────────────────┐
+   Image (224x224) │  ViT Backbone         │
+   ───────────────►│  (google/vit-base)    │
+                    │  Shared features      │
+                    └─────────┬────────────┘
+                              │ CLS token (768-d)
+                    ┌─────────┴────────────┐
+                    │                      │
+              ┌─────▼─────┐         ┌──────▼──────┐
+              │ Type Head │         │ Issue Head  │
+              │ Dropout   │         │ Dropout     │
+              │ Linear(3) │         │ Linear(5)   │
+              │ Softmax   │         │ Sigmoid     │
+              └───────────┘         └─────────────┘
+                    │                      │
+              Skin Type             Skin Issues
+              (dry/normal/oily)     (multi-label)
+```
+
+**Skin Types** (single-label): dry, normal, oily
+
+**Skin Issues** (multi-label, can be multiple): acne, dark spots, wrinkles, redness, large pores
 
 ## Folder Structure
 
-```text
+```
 image detection/
-├── requirements.txt
 ├── README.md
+├── requirements.txt
 └── src/
-    ├── model.py
-    ├── utils.py
-    ├── train.py
-    ├── inference.py
-    └── embedded_inference.py
+    ├── model.py              # MultiTaskViT architecture
+    ├── utils.py              # Dataset, annotations, evaluation
+    ├── train.py              # Multi-task training pipeline
+    ├── inference.py           # CLI inference (image/camera/ONNX)
+    ├── gui.py                 # Camera GUI with live detection
+    └── embedded_inference.py  # Lightweight edge inference
 ```
 
-After training, output files are generated under:
-
-```text
-outputs/
-├── raw_data/                         # Kaggle downloaded data
-├── processed_data/
-│   ├── train/
-│   ├── val/
-│   └── test/
-├── artifacts/
-│   ├── best_model.pth
-│   ├── skin_vit_classifier_final.pth
-│   ├── skin_vit_classifier.onnx
-│   ├── skin_vit_classifier_int8.onnx
-│   └── label_map.json
-└── evaluation/
-    ├── training_curves.png
-    ├── confusion_matrix.png
-    └── classification_report.txt
-```
-
-## 1) Setup
-
-### Create and activate virtual environment (Windows PowerShell)
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-### Install dependencies
+## Setup
 
 ```powershell
 pip install -r requirements.txt
 ```
 
-## 2) Configure Kaggle API
-
-1. Go to Kaggle -> Account -> Create New API Token.
-2. Download `kaggle.json`.
-3. Place it at:
-   - Windows: `%USERPROFILE%\.kaggle\kaggle.json`
-4. Ensure file permissions are secure.
-
-Quick test:
+## Train
 
 ```powershell
-kaggle datasets list -s skin-types-image-detection-vit
+python src/train.py --epochs 10 --batch_size 16 --lr 3e-5 --num_workers 0
 ```
 
-## 3) Train the ViT Model
+The pipeline:
+1. Downloads dataset (Kaggle) or generates synthetic demo images
+2. Creates train/val/test splits
+3. Generates multi-label issue annotations (simulated from skin-type priors, or loaded from `annotations.csv`)
+4. Trains shared ViT backbone with two heads (CrossEntropy + BCEWithLogits)
+5. Evaluates both tasks on test set
+6. Saves `.pth` model + ONNX export
 
-From project root:
+## Inference
 
+### CLI (single image)
 ```powershell
-python src/train.py --epochs 10 --batch_size 16 --lr 3e-5
+python src/inference.py --image "path\to\photo.jpg"
 ```
 
-What this does:
-- Downloads dataset from Kaggle
-- Detects class folders automatically
-- Creates train/val/test splits
-- Applies preprocessing + augmentation
-- Loads `google/vit-base-patch16-224` pretrained model
-- Fine-tunes on your skin type dataset
-- Prints training/validation loss and accuracy every epoch
-- Evaluates on test set (accuracy, confusion matrix, classification report)
-- Saves `.pth` model and exports ONNX + INT8 quantized ONNX
-
-## 4) Inference on One Image (PyTorch)
-
+### CLI (camera capture)
 ```powershell
-python src/inference.py --image "path\to\image.jpg"
+python src/inference.py --use_camera
 ```
 
-## 5) Inference from Camera (PyTorch)
-
+### GUI (camera + live detection)
 ```powershell
-python src/inference.py --use_camera --camera_id 0
+python src/gui.py
 ```
 
-- Press `SPACE` to capture frame and classify.
-- Press `ESC` to cancel.
-
-## 6) ONNX Inference (Single Image)
-
+### Edge / Raspberry Pi (ONNX)
 ```powershell
-python src/inference.py --onnx "outputs/artifacts/skin_vit_classifier_int8.onnx" --image "path\to\image.jpg"
+python src/embedded_inference.py --camera_id 0
 ```
 
-## 7) Lightweight Embedded/Edge Inference
+## Extending with Real Annotations
 
-This script is designed for CPU-only edge devices (Raspberry Pi, mini-PC, external processor setups):
+To use real multi-label annotations, create `outputs/annotations.csv`:
 
-```powershell
-python src/embedded_inference.py --model "outputs/artifacts/skin_vit_classifier_int8.onnx" --camera_id 0
+```csv
+filename,skin_type,acne,dark_spots,wrinkles,redness,large_pores
+img001.jpg,oily,1,0,0,1,1
+img002.jpg,dry,0,1,1,0,0
 ```
 
-It uses:
-- `onnxruntime` (fast CPU runtime)
-- OpenCV camera capture
-- Quantized INT8 ONNX model for lower memory and better speed
+Place it next to `outputs/processed_data/` and the pipeline will use it instead of simulated labels.
 
-## Notes for Arduino + External Processor
+## Training Losses
 
-Arduino boards generally cannot run ViT directly due to memory/compute constraints. Typical deployment is:
-- Arduino handles sensor/control logic
-- External processor (Raspberry Pi / Jetson / mini Linux device) runs ONNX inference
-- Communicate prediction result via serial/UART/I2C
+| Task | Loss | Activation |
+|------|------|------------|
+| Skin Type | CrossEntropyLoss | Softmax (single label) |
+| Skin Issues | BCEWithLogitsLoss | Sigmoid (multi-label) |
 
-## Useful Optional Training Arguments
-
-```powershell
-python src/train.py --epochs 20 --batch_size 8 --num_workers 4 --image_size 224
-```
-
-## Troubleshooting
-
-- If Kaggle download fails:
-  - Check `kaggle.json` location and credentials
-  - Run `kaggle datasets list` to validate setup
-- If CUDA is not available:
-  - Training will run on CPU automatically (slower)
-- If ONNX quantization fails:
-  - Training still completes; only INT8 export is skipped
-
+Combined loss: `L = L_type + weight * L_issues` (default weight = 1.0, adjustable via `--issue_weight`)

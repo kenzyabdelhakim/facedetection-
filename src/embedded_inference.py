@@ -1,6 +1,7 @@
 """
-Lightweight ONNX inference script for edge devices (Raspberry Pi, x86 mini PCs, etc.).
-This script uses only ONNX Runtime + OpenCV + NumPy.
+Lightweight multi-task ONNX inference for edge devices.
+Outputs both skin type and detected skin issues.
+Dependencies: onnxruntime, opencv-python, numpy only.
 """
 
 import argparse
@@ -12,37 +13,32 @@ import numpy as np
 import onnxruntime as ort
 
 
-def load_labels(label_map_path: Path):
-    with label_map_path.open("r", encoding="utf-8") as f:
+def load_labels(path: Path):
+    with path.open("r", encoding="utf-8") as f:
         data = json.load(f)
-    return [data[str(i)] for i in range(len(data))]
+    return data["skin_types"], data["skin_issues"]
 
 
-def preprocess_bgr(frame_bgr: np.ndarray, image_size: int = 224) -> np.ndarray:
-    frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
-    resized = cv2.resize(frame_rgb, (image_size, image_size))
-    tensor = resized.astype(np.float32) / 255.0
-    tensor = (tensor - 0.5) / 0.5
-    tensor = np.transpose(tensor, (2, 0, 1))
-    tensor = np.expand_dims(tensor, axis=0)
-    return tensor
+def preprocess(frame_bgr: np.ndarray, size: int = 224) -> np.ndarray:
+    rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
+    resized = cv2.resize(rgb, (size, size)).astype(np.float32) / 255.0
+    tensor = (resized - 0.5) / 0.5
+    return np.expand_dims(np.transpose(tensor, (2, 0, 1)), 0)
 
 
-def softmax(x: np.ndarray) -> np.ndarray:
-    x = x - np.max(x, axis=1, keepdims=True)
-    e = np.exp(x)
-    return e / np.sum(e, axis=1, keepdims=True)
+def softmax(x):
+    e = np.exp(x - np.max(x, axis=1, keepdims=True))
+    return e / e.sum(axis=1, keepdims=True)
 
 
-def run_camera_inference(
-    model_path: Path,
-    label_map_path: Path,
-    camera_id: int = 0,
-    image_size: int = 224,
-):
-    labels = load_labels(label_map_path)
-    session = ort.InferenceSession(str(model_path), providers=["CPUExecutionProvider"])
-    input_name = session.get_inputs()[0].name
+def sigmoid(x):
+    return 1.0 / (1.0 + np.exp(-x))
+
+
+def run_camera(model_path: Path, label_path: Path, camera_id: int = 0, size: int = 224):
+    skin_types, skin_issues = load_labels(label_path)
+    sess = ort.InferenceSession(str(model_path), providers=["CPUExecutionProvider"])
+    inp = sess.get_inputs()[0].name
 
     cap = cv2.VideoCapture(camera_id)
     if not cap.isOpened():
@@ -54,26 +50,44 @@ def run_camera_inference(
         if not ok:
             continue
 
-        x = preprocess_bgr(frame, image_size=image_size)
-        logits = session.run(None, {input_name: x})[0]
-        probs = softmax(logits)
+        x = preprocess(frame, size)
+        type_logits, issue_logits = sess.run(None, {inp: x})
 
-        idx = int(np.argmax(probs[0]))
-        conf = float(probs[0, idx])
-        text = f"{labels[idx]} ({conf:.2f})"
+        type_probs = softmax(type_logits)[0]
+        type_idx = int(np.argmax(type_probs))
+        type_conf = float(type_probs[type_idx])
 
-        cv2.putText(
-            frame,
-            text,
-            (10, 30),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.8,
-            (0, 255, 0),
-            2,
-            cv2.LINE_AA,
-        )
-        cv2.imshow("Embedded Skin Type Inference", frame)
+        issue_probs = sigmoid(issue_logits)[0]
+        detected = [skin_issues[i] for i, p in enumerate(issue_probs) if p >= 0.5]
 
+        # Draw skin type
+        type_text = f"Type: {skin_types[type_idx]} ({type_conf:.0%})"
+        cv2.putText(frame, type_text, (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2, cv2.LINE_AA)
+
+        # Draw issues
+        if detected:
+            issues_text = "Issues: " + ", ".join(
+                i.replace("_", " ").title() for i in detected
+            )
+        else:
+            issues_text = "Issues: None"
+        cv2.putText(frame, issues_text, (10, 60),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 200, 255), 2, cv2.LINE_AA)
+
+        # Draw individual issue bars
+        y0 = 90
+        for i, iss in enumerate(skin_issues):
+            p = float(issue_probs[i])
+            nice = iss.replace("_", " ").title()
+            bar_w = int(p * 150)
+            colour = (0, 255, 0) if p < 0.5 else (0, 0, 255)
+            cv2.rectangle(frame, (10, y0), (10 + bar_w, y0 + 12), colour, -1)
+            cv2.putText(frame, f"{nice}: {p:.0%}", (170, y0 + 11),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 255), 1, cv2.LINE_AA)
+            y0 += 20
+
+        cv2.imshow("Skin Analysis (Edge)", frame)
         if (cv2.waitKey(1) & 0xFF) == 27:
             break
 
@@ -82,27 +96,14 @@ def run_camera_inference(
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Lightweight ONNX camera inference")
-    parser.add_argument(
-        "--model",
-        type=str,
-        default="outputs/artifacts/skin_vit_classifier_int8.onnx",
-    )
-    parser.add_argument(
-        "--label_map",
-        type=str,
-        default="outputs/artifacts/label_map.json",
-    )
-    parser.add_argument("--camera_id", type=int, default=0)
-    parser.add_argument("--image_size", type=int, default=224)
-    return parser.parse_args()
+    p = argparse.ArgumentParser(description="Edge multi-task skin analysis")
+    p.add_argument("--model", default="outputs/artifacts/skin_multitask_vit.onnx")
+    p.add_argument("--label_map", default="outputs/artifacts/label_map.json")
+    p.add_argument("--camera_id", type=int, default=0)
+    p.add_argument("--image_size", type=int, default=224)
+    return p.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_args()
-    run_camera_inference(
-        model_path=Path(args.model),
-        label_map_path=Path(args.label_map),
-        camera_id=args.camera_id,
-        image_size=args.image_size,
-    )
+    run_camera(Path(args.model), Path(args.label_map), args.camera_id, args.image_size)
