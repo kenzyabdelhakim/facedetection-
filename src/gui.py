@@ -1,7 +1,8 @@
 """
-Skin Analysis GUI  –  Multi-task ViT
-────────────────────────────────────
+Skin Analysis GUI  –  Multi-task ViT  +  Arduino Serial Link
+─────────────────────────────────────────────────────────────
 Live camera feed with real-time skin type + skin issue detection.
+Integrated serial connection to Arduino Mega for vending control.
 """
 
 import sys
@@ -15,6 +16,13 @@ import cv2
 import torch
 from PIL import Image, ImageTk
 from torchvision import transforms
+
+try:
+    import serial
+    import serial.tools.list_ports
+    HAS_SERIAL = True
+except ImportError:
+    HAS_SERIAL = False
 
 from model import load_multitask_vit, SKIN_TYPES, SKIN_ISSUES
 
@@ -31,6 +39,7 @@ TEXT_FG = "#e0e0e0"
 TEXT_MUTED = "#8d99ae"
 SUCCESS = "#2ecc71"
 WARNING = "#f39c12"
+ARDUINO_BLUE = "#00979D"
 
 SKIN_COLOURS = {"dry": "#e67e22", "normal": "#2ecc71", "oily": "#3498db"}
 
@@ -90,10 +99,10 @@ class SkinDetectionApp:
 
     def __init__(self, root: tk.Tk):
         self.root = root
-        self.root.title("Skin Analysis  –  Multi-task ViT")
+        self.root.title("Skin Analysis  –  Multi-task ViT  +  Arduino")
         self.root.configure(bg=BG)
         self.root.resizable(True, True)
-        self.root.minsize(960, 680)
+        self.root.minsize(1060, 720)
 
         self.cap = None
         self.running = False
@@ -102,6 +111,14 @@ class SkinDetectionApp:
         self.classifier = None
         self.model_loaded = False
         self._photo_ref = None
+        self._last_result = None
+
+        # Arduino serial state
+        self.ser = None
+        self.ser_connected = False
+        self.ser_thread = None
+        self.ser_stop_event = threading.Event()
+        self.auto_send_var = None
 
         self._build_ui()
         self._load_model_async()
@@ -112,7 +129,8 @@ class SkinDetectionApp:
         # Top bar
         top = tk.Frame(self.root, bg=ACCENT, height=52)
         top.pack(fill="x")
-        tk.Label(top, text="  Skin Analysis", font=("Segoe UI", 16, "bold"),
+        tk.Label(top, text="  Skin Analysis + Arduino",
+                 font=("Segoe UI", 16, "bold"),
                  fg="white", bg=ACCENT).pack(side="left", padx=12, pady=8)
         self.status_lbl = tk.Label(top, text="Loading model...",
                                    font=("Segoe UI", 10), fg=WARNING, bg=ACCENT)
@@ -122,19 +140,20 @@ class SkinDetectionApp:
         body.pack(fill="both", expand=True, padx=10, pady=10)
 
         # Left: camera
-        left = tk.Frame(body, bg=PANEL_BG, highlightthickness=1, highlightbackground=ACCENT)
+        left = tk.Frame(body, bg=PANEL_BG, highlightthickness=1,
+                        highlightbackground=ACCENT)
         left.pack(side="left", fill="both", expand=True, padx=(0, 5))
         self.canvas = tk.Canvas(left, bg="#000", highlightthickness=0,
                                 width=self.CAMERA_W, height=self.CAMERA_H)
         self.canvas.pack(fill="both", expand=True, padx=4, pady=4)
 
-        # Right panel (scrollable area)
-        right = tk.Frame(body, bg=PANEL_BG, width=310, highlightthickness=1,
+        # Right panel
+        right = tk.Frame(body, bg=PANEL_BG, width=320, highlightthickness=1,
                          highlightbackground=ACCENT)
         right.pack(side="right", fill="y", padx=(5, 0))
         right.pack_propagate(False)
 
-        # --- Controls ---
+        # ─── Controls ────────────────────────────────────────────────
         self._section(right, "Controls")
         btn_f = tk.Frame(right, bg=PANEL_BG)
         btn_f.pack(fill="x", padx=12, pady=(0, 4))
@@ -154,58 +173,133 @@ class SkinDetectionApp:
 
         self._btn(btn_f, "Browse Image...", self._upload_image).pack(fill="x", pady=2)
 
-        # --- Skin Type Result ---
+        # ─── Arduino Link ────────────────────────────────────────────
+        self._section(right, "Arduino Link")
+        ard_f = tk.Frame(right, bg=PANEL_BG)
+        ard_f.pack(fill="x", padx=12, pady=(0, 4))
+
+        # Port selector row
+        port_row = tk.Frame(ard_f, bg=PANEL_BG)
+        port_row.pack(fill="x", pady=2)
+
+        tk.Label(port_row, text="Port:", font=("Segoe UI", 9),
+                 fg=TEXT_FG, bg=PANEL_BG).pack(side="left")
+
+        self.port_var = tk.StringVar()
+        self.port_combo = tk.OptionMenu(port_row, self.port_var, "")
+        self.port_combo.config(font=("Segoe UI", 9), bg=ACCENT, fg=TEXT_FG,
+                               activebackground=ACCENT, activeforeground="white",
+                               highlightthickness=0, width=12)
+        self.port_combo["menu"].config(bg=ACCENT, fg=TEXT_FG,
+                                       activebackground=HIGHLIGHT,
+                                       activeforeground="white")
+        self.port_combo.pack(side="left", padx=(4, 4))
+
+        self.btn_refresh_ports = tk.Button(
+            port_row, text="↻", font=("Segoe UI", 10, "bold"),
+            fg="white", bg=ACCENT, relief="flat", width=3,
+            command=self._refresh_ports, cursor="hand2")
+        self.btn_refresh_ports.pack(side="left")
+
+        # Connect / disconnect
+        self.btn_connect = tk.Button(
+            ard_f, text="Connect", font=("Segoe UI", 10, "bold"),
+            fg="white", bg=ARDUINO_BLUE, relief="flat", cursor="hand2",
+            command=self._toggle_serial, padx=10, pady=4)
+        self.btn_connect.pack(fill="x", pady=2)
+
+        # Status dot + label
+        status_row = tk.Frame(ard_f, bg=PANEL_BG)
+        status_row.pack(fill="x", pady=2)
+        self.ser_dot = tk.Label(status_row, text="●", font=("Segoe UI", 12),
+                                fg="#e74c3c", bg=PANEL_BG)
+        self.ser_dot.pack(side="left")
+        self.ser_status_lbl = tk.Label(status_row, text="Disconnected",
+                                       font=("Segoe UI", 9), fg=TEXT_MUTED,
+                                       bg=PANEL_BG)
+        self.ser_status_lbl.pack(side="left", padx=4)
+
+        # Auto-send checkbox
+        self.auto_send_var = tk.BooleanVar(value=True)
+        tk.Checkbutton(ard_f, text="  Auto-send results to Arduino",
+                       variable=self.auto_send_var, font=("Segoe UI", 9),
+                       fg=TEXT_FG, bg=PANEL_BG, selectcolor=ACCENT,
+                       activebackground=PANEL_BG, activeforeground=TEXT_FG
+                       ).pack(anchor="w", pady=2)
+
+        # Manual send + vend buttons
+        send_row = tk.Frame(ard_f, bg=PANEL_BG)
+        send_row.pack(fill="x", pady=2)
+        self.btn_send_result = tk.Button(
+            send_row, text="Send Result", font=("Segoe UI", 9, "bold"),
+            fg="white", bg=ACCENT, relief="flat", cursor="hand2",
+            command=self._send_last_result, padx=6, pady=3)
+        self.btn_send_result.pack(side="left", fill="x", expand=True, padx=(0, 2))
+
+        self.btn_vend_all = tk.Button(
+            send_row, text="Vend All", font=("Segoe UI", 9, "bold"),
+            fg="white", bg=SUCCESS, relief="flat", cursor="hand2",
+            command=lambda: self._send_serial("VEND:ALL"), padx=6, pady=3)
+        self.btn_vend_all.pack(side="left", fill="x", expand=True, padx=(2, 0))
+
+        # Serial log
+        self.ser_log = tk.Text(ard_f, height=4, font=("Consolas", 8),
+                               bg="#0d1117", fg="#58a6ff", insertbackground="#58a6ff",
+                               relief="flat", state="disabled", wrap="word")
+        self.ser_log.pack(fill="x", pady=(4, 0))
+
+        # ─── Skin Type Result ────────────────────────────────────────
         self._section(right, "Skin Type")
         rf = tk.Frame(right, bg=PANEL_BG)
         rf.pack(fill="x", padx=12)
-        self.lbl_type = tk.Label(rf, text="---", font=("Segoe UI", 22, "bold"),
+        self.lbl_type = tk.Label(rf, text="---", font=("Segoe UI", 20, "bold"),
                                  fg=HIGHLIGHT, bg=PANEL_BG)
         self.lbl_type.pack(pady=(2, 0))
         self.lbl_conf = tk.Label(rf, text="", font=("Segoe UI", 10),
                                  fg=TEXT_MUTED, bg=PANEL_BG)
         self.lbl_conf.pack()
 
-        # Type bars
         self.type_bars = {}
         for cls in SKIN_TYPES:
             row = tk.Frame(rf, bg=PANEL_BG)
-            row.pack(fill="x", pady=2)
+            row.pack(fill="x", pady=1)
             tk.Label(row, text=cls.capitalize(), font=("Segoe UI", 9, "bold"),
                      fg=TEXT_FG, bg=PANEL_BG, width=7, anchor="w").pack(side="left")
-            bar_bg = tk.Frame(row, bg="#2d3436", height=14)
+            bar_bg = tk.Frame(row, bg="#2d3436", height=12)
             bar_bg.pack(side="left", fill="x", expand=True, padx=4)
             bar_bg.pack_propagate(False)
-            bar_fill = tk.Frame(bar_bg, bg=SKIN_COLOURS.get(cls, HIGHLIGHT), height=14)
+            bar_fill = tk.Frame(bar_bg, bg=SKIN_COLOURS.get(cls, HIGHLIGHT), height=12)
             bar_fill.place(relx=0, rely=0, relheight=1, relwidth=0)
             pct = tk.Label(row, text="0%", font=("Segoe UI", 8),
                            fg=TEXT_MUTED, bg=PANEL_BG, width=5, anchor="e")
             pct.pack(side="right")
             self.type_bars[cls] = (bar_fill, pct)
 
-        # --- Skin Issues ---
+        # ─── Detected Issues ─────────────────────────────────────────
         self._section(right, "Detected Issues")
         self.issues_frame = tk.Frame(right, bg=PANEL_BG)
         self.issues_frame.pack(fill="x", padx=12)
         self.lbl_no_issues = tk.Label(self.issues_frame, text="None detected",
-                                      font=("Segoe UI", 10), fg=TEXT_MUTED, bg=PANEL_BG)
+                                      font=("Segoe UI", 10), fg=TEXT_MUTED,
+                                      bg=PANEL_BG)
         self.lbl_no_issues.pack(anchor="w")
 
         # Issue score bars
         self._section(right, "Issue Scores")
         isf = tk.Frame(right, bg=PANEL_BG)
-        isf.pack(fill="x", padx=12, pady=(0, 6))
+        isf.pack(fill="x", padx=12, pady=(0, 4))
         self.issue_bars = {}
         for iss in SKIN_ISSUES:
             row = tk.Frame(isf, bg=PANEL_BG)
-            row.pack(fill="x", pady=2)
+            row.pack(fill="x", pady=1)
             nice = iss.replace("_", " ").title()
-            tk.Label(row, text=nice, font=("Segoe UI", 9),
+            tk.Label(row, text=nice, font=("Segoe UI", 8),
                      fg=TEXT_FG, bg=PANEL_BG, width=11, anchor="w").pack(side="left")
-            bar_bg = tk.Frame(row, bg="#2d3436", height=14)
+            bar_bg = tk.Frame(row, bg="#2d3436", height=12)
             bar_bg.pack(side="left", fill="x", expand=True, padx=4)
             bar_bg.pack_propagate(False)
             colour = ISSUE_COLOURS.get(iss, HIGHLIGHT)
-            bar_fill = tk.Frame(bar_bg, bg=colour, height=14)
+            bar_fill = tk.Frame(bar_bg, bg=colour, height=12)
             bar_fill.place(relx=0, rely=0, relheight=1, relwidth=0)
             pct = tk.Label(row, text="0%", font=("Segoe UI", 8),
                            fg=TEXT_MUTED, bg=PANEL_BG, width=5, anchor="e")
@@ -215,16 +309,20 @@ class SkinDetectionApp:
         # Keyboard hints
         tk.Label(right, text="Space = capture  |  Esc = stop camera",
                  font=("Segoe UI", 8), fg=TEXT_MUTED, bg=PANEL_BG
-                 ).pack(side="bottom", pady=8)
+                 ).pack(side="bottom", pady=6)
 
         self.root.bind("<space>", lambda e: self._capture())
         self.root.bind("<Escape>", lambda e: self._stop_camera())
 
+        # Initial port scan
+        self._refresh_ports()
+
     # ── Helpers ──────────────────────────────────────────────────────
     def _section(self, parent, title):
         tk.Label(parent, text=title, font=("Segoe UI", 11, "bold"),
-                 fg=TEXT_MUTED, bg=PANEL_BG, anchor="w").pack(fill="x", padx=12, pady=(10, 1))
-        tk.Frame(parent, bg=ACCENT, height=1).pack(fill="x", padx=12, pady=(0, 4))
+                 fg=TEXT_MUTED, bg=PANEL_BG, anchor="w"
+                 ).pack(fill="x", padx=12, pady=(8, 1))
+        tk.Frame(parent, bg=ACCENT, height=1).pack(fill="x", padx=12, pady=(0, 3))
 
     def _btn(self, parent, text, cmd):
         return tk.Button(parent, text=text, command=cmd,
@@ -232,7 +330,176 @@ class SkinDetectionApp:
                          activebackground="#c0392b", activeforeground="white",
                          relief="flat", cursor="hand2", padx=10, pady=5)
 
-    # ── Model ────────────────────────────────────────────────────────
+    # ══════════════════════════════════════════════════════════════════
+    #  ARDUINO SERIAL
+    # ══════════════════════════════════════════════════════════════════
+
+    def _refresh_ports(self):
+        """Scan available COM ports and populate the dropdown."""
+        menu = self.port_combo["menu"]
+        menu.delete(0, "end")
+
+        if not HAS_SERIAL:
+            self.port_var.set("pyserial missing")
+            return
+
+        ports = serial.tools.list_ports.comports()
+        port_names = []
+        for p in sorted(ports, key=lambda x: x.device):
+            label = f"{p.device}  ({p.description[:28]})" if p.description else p.device
+            port_names.append(p.device)
+            menu.add_command(label=label,
+                             command=lambda v=p.device: self.port_var.set(v))
+
+        if port_names:
+            self.port_var.set(port_names[0])
+        else:
+            self.port_var.set("No ports found")
+
+    def _toggle_serial(self):
+        if self.ser_connected:
+            self._disconnect_serial()
+        else:
+            self._connect_serial()
+
+    def _connect_serial(self):
+        if not HAS_SERIAL:
+            messagebox.showerror("Missing Library",
+                                 "pyserial is not installed.\n"
+                                 "Run: pip install pyserial")
+            return
+
+        port = self.port_var.get()
+        if not port or port.startswith("No ports") or port.startswith("pyserial"):
+            messagebox.showwarning("No Port", "Select a valid serial port first.")
+            return
+
+        try:
+            self.ser = serial.Serial(port, 9600, timeout=0.1)
+            self.ser_connected = True
+            self.ser_stop_event.clear()
+
+            self.btn_connect.config(text="Disconnect", bg="#c0392b")
+            self.ser_dot.config(fg=SUCCESS)
+            self.ser_status_lbl.config(text=f"Connected: {port}", fg=SUCCESS)
+            self._log_serial(f"[connected] {port} @ 9600 baud")
+
+            self.ser_thread = threading.Thread(target=self._serial_listener,
+                                               daemon=True)
+            self.ser_thread.start()
+
+        except Exception as e:
+            messagebox.showerror("Serial Error", str(e))
+            self.ser_connected = False
+
+    def _disconnect_serial(self):
+        self.ser_stop_event.set()
+        self.ser_connected = False
+        if self.ser:
+            try:
+                self.ser.close()
+            except Exception:
+                pass
+            self.ser = None
+
+        self.btn_connect.config(text="Connect", bg=ARDUINO_BLUE)
+        self.ser_dot.config(fg="#e74c3c")
+        self.ser_status_lbl.config(text="Disconnected", fg=TEXT_MUTED)
+        self._log_serial("[disconnected]")
+
+    def _serial_listener(self):
+        """Background thread: read lines from Arduino, handle REQ:SCAN."""
+        buf = ""
+        while not self.ser_stop_event.is_set():
+            try:
+                if not self.ser or not self.ser.is_open:
+                    break
+                raw = self.ser.read(256)
+                if not raw:
+                    continue
+                text = raw.decode("ascii", errors="replace")
+                buf += text
+
+                while "\n" in buf:
+                    line, buf = buf.split("\n", 1)
+                    line = line.strip("\r\n \t")
+                    if not line:
+                        continue
+
+                    self.root.after(0, lambda l=line: self._log_serial(f"← {l}"))
+
+                    if line == "REQ:SCAN":
+                        self.root.after(0, self._arduino_scan_request)
+                    elif line == "READY":
+                        self.root.after(0,
+                            lambda: self._log_serial("Arduino is ready."))
+
+            except Exception as e:
+                if not self.ser_stop_event.is_set():
+                    self.root.after(0,
+                        lambda: self._log_serial(f"[error] {e}"))
+                break
+
+        # If we broke out unexpectedly, update UI
+        if not self.ser_stop_event.is_set():
+            self.root.after(0, self._disconnect_serial)
+
+    def _arduino_scan_request(self):
+        """Arduino pressed Scan — capture current frame and classify."""
+        self._log_serial("Arduino requested scan — capturing...")
+        if not self.running or not self.cap or not self.model_loaded:
+            self._log_serial("[warn] Camera or model not ready")
+            return
+        ok, frame = self.cap.read()
+        if not ok:
+            self._log_serial("[warn] Failed to capture frame")
+            return
+        pil = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+        self._show(pil.copy())
+        threading.Thread(target=self._classify, args=(pil,), daemon=True).start()
+
+    def _send_serial(self, msg: str):
+        """Send a string to Arduino."""
+        if not self.ser_connected or not self.ser:
+            self._log_serial("[warn] Not connected")
+            return
+        try:
+            self.ser.write((msg.strip() + "\n").encode("ascii"))
+            self.ser.flush()
+            self._log_serial(f"→ {msg}")
+        except Exception as e:
+            self._log_serial(f"[error] {e}")
+
+    def _send_last_result(self):
+        """Send the most recent classification result to Arduino."""
+        if not self._last_result:
+            self._log_serial("[warn] No result to send")
+            return
+        self._send_result_to_arduino(self._last_result)
+
+    def _send_result_to_arduino(self, r: dict):
+        """Format result dict into protocol string and send."""
+        skin = r["skin_type"].upper()
+        issues = [i.upper() for i in r.get("issues", [])]
+        parts = [skin] + issues
+        msg = "RESULT:" + ",".join(parts)
+        self._send_serial(msg)
+
+    def _log_serial(self, text: str):
+        """Append a line to the serial log widget."""
+        self.ser_log.config(state="normal")
+        self.ser_log.insert("end", text + "\n")
+        self.ser_log.see("end")
+        # Keep log from growing unbounded
+        lines = int(self.ser_log.index("end-1c").split(".")[0])
+        if lines > 200:
+            self.ser_log.delete("1.0", "50.0")
+        self.ser_log.config(state="disabled")
+
+    # ══════════════════════════════════════════════════════════════════
+    #  MODEL
+    # ══════════════════════════════════════════════════════════════════
+
     def _load_model_async(self):
         def _load():
             try:
@@ -246,7 +513,10 @@ class SkinDetectionApp:
                     text=f"Error: {e}", fg=HIGHLIGHT))
         threading.Thread(target=_load, daemon=True).start()
 
-    # ── Camera ───────────────────────────────────────────────────────
+    # ══════════════════════════════════════════════════════════════════
+    #  CAMERA
+    # ══════════════════════════════════════════════════════════════════
+
     def _toggle_camera(self):
         self._stop_camera() if self.running else self._start_camera()
 
@@ -283,7 +553,8 @@ class SkinDetectionApp:
                 now = time.time()
                 if now - self.last_pred_time > 1.0:
                     self.last_pred_time = now
-                    threading.Thread(target=self._classify, args=(pil.copy(),), daemon=True).start()
+                    threading.Thread(target=self._classify,
+                                     args=(pil.copy(),), daemon=True).start()
             self._show(pil)
         self.root.after(30, self._update_camera)
 
@@ -295,7 +566,10 @@ class SkinDetectionApp:
         self.canvas.delete("all")
         self.canvas.create_image(0, 0, anchor="nw", image=self._photo_ref)
 
-    # ── Capture / Upload ─────────────────────────────────────────────
+    # ══════════════════════════════════════════════════════════════════
+    #  CAPTURE / UPLOAD
+    # ══════════════════════════════════════════════════════════════════
+
     def _capture(self):
         if not self.running or not self.cap or not self.model_loaded:
             return
@@ -323,15 +597,20 @@ class SkinDetectionApp:
     def _toggle_live(self):
         self.live_classify = self.live_var.get()
 
-    # ── Classification ───────────────────────────────────────────────
+    # ══════════════════════════════════════════════════════════════════
+    #  CLASSIFICATION
+    # ══════════════════════════════════════════════════════════════════
+
     def _classify(self, pil_img):
         try:
             result = self.classifier.predict(pil_img)
             self.root.after(0, lambda: self._update_result(result))
-        except Exception as e:
-            self.root.after(0, lambda: self.lbl_type.config(text=f"Error"))
+        except Exception:
+            self.root.after(0, lambda: self.lbl_type.config(text="Error"))
 
     def _update_result(self, r: dict):
+        self._last_result = r
+
         # Skin type
         stype = r["skin_type"]
         colour = SKIN_COLOURS.get(stype, HIGHLIGHT)
@@ -350,7 +629,8 @@ class SkinDetectionApp:
         issues = r["issues"]
         if not issues:
             tk.Label(self.issues_frame, text="No issues detected",
-                     font=("Segoe UI", 10), fg=SUCCESS, bg=PANEL_BG).pack(anchor="w")
+                     font=("Segoe UI", 10), fg=SUCCESS, bg=PANEL_BG
+                     ).pack(anchor="w")
         else:
             for iss in issues:
                 nice = iss.replace("_", " ").title()
@@ -368,9 +648,17 @@ class SkinDetectionApp:
             bar.place(relwidth=max(v, 0.01))
             pct.config(text=f"{v:.0%}")
 
-    # ── Cleanup ──────────────────────────────────────────────────────
+        # Auto-send to Arduino
+        if self.auto_send_var.get() and self.ser_connected:
+            self._send_result_to_arduino(r)
+
+    # ══════════════════════════════════════════════════════════════════
+    #  CLEANUP
+    # ══════════════════════════════════════════════════════════════════
+
     def _on_close(self):
         self._stop_camera()
+        self._disconnect_serial()
         self.root.destroy()
 
 
