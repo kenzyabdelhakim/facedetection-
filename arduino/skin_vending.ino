@@ -223,12 +223,23 @@ void parseSerialCommand(const String& cmd) {
     String c = cmd;
     c.trim();
 
+    Serial.print("RX:");
+    Serial.println(c);
+
     if (c.startsWith("RESULT:")) {
-        String payload = c.substring(7);   // after "RESULT:"
+        String payload = c.substring(7);
         parseSkinResult(payload);
         buildRecommendations();
         currentScreen = SCR_RESULT;
         drawResultScreen();
+
+    } else if (c == "TEST") {
+        // Quick test: simulate an oily+acne result from Serial Monitor
+        parseSkinResult("OILY,ACNE,LARGE_PORES");
+        buildRecommendations();
+        currentScreen = SCR_RESULT;
+        drawResultScreen();
+        Serial.println("OK:TEST");
 
     } else if (c.startsWith("VEND:")) {
         String what = c.substring(5);
@@ -345,7 +356,7 @@ void drawSmallButton(int x, int y, int w, int h,
     lcd.Print_String((char*)label, tx, ty);
 }
 
-void drawLabel(int x, int y, const char* text, uint16_t col, uint8_t sz, uint16_t bg) {
+void drawLabel(int x, int y, const char* text, uint8_t sz, uint16_t col, uint16_t bg) {
     lcd.Set_Text_Size(sz);
     lcd.Set_Text_colour(col);
     lcd.Set_Text_Back_colour(bg);
