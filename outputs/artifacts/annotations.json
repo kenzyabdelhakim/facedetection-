@@ -1,0 +1,4502 @@
+{
+  "train/dry/dry_0000.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0002.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "train/dry/dry_0003.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0004.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/dry/dry_0009.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0010.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0014.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0015.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0016.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "train/dry/dry_0017.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0018.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0021.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0024.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0025.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0029.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0030.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0031.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0032.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "train/dry/dry_0034.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/dry/dry_0036.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0037.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0038.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0039.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0040.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0041.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/dry/dry_0042.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0046.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/dry/dry_0047.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0049.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0051.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0052.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0053.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0058.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0060.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0061.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0063.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0064.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0065.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0066.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0067.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0068.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0069.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0072.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0073.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0074.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "train/dry/dry_0075.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0076.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0078.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0079.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0080.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0081.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0082.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0083.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0084.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/dry/dry_0085.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0086.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0087.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0088.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0090.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0091.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0092.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0093.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0094.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0095.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0096.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/dry/dry_0098.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0099.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0100.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0101.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0102.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0104.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0105.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0106.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0109.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0110.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0111.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0112.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0113.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0115.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "train/dry/dry_0116.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0117.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0118.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0119.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0120.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  "train/dry/dry_0122.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0123.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0124.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0127.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0128.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0130.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0131.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0132.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0133.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0134.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/dry/dry_0135.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0136.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0137.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0138.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0141.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0142.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/dry/dry_0143.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  "train/dry/dry_0145.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0146.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0147.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/dry/dry_0149.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0001.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0002.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0003.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0005.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0006.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/normal/normal_0007.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0009.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0011.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0012.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0013.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0015.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0017.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0018.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/normal/normal_0019.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0020.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0022.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0023.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0024.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0025.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0026.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0029.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0030.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0031.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0032.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0034.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0035.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0036.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0037.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0038.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0040.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0042.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0043.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/normal/normal_0044.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0046.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0047.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0048.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0049.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0051.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0052.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0053.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0055.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0056.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0057.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0058.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0059.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0063.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0064.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0065.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0066.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0069.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0071.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0073.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0074.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0075.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0079.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0080.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0081.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0083.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0085.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0086.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0087.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0088.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0089.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0090.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0091.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0094.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0096.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0099.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/normal/normal_0100.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0101.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0102.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0103.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0105.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0106.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0107.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0108.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0109.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0110.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0111.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0113.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0115.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/normal/normal_0116.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0117.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0118.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0119.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0120.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0122.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0124.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0126.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0127.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0130.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0131.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0132.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0133.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0134.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0136.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0137.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0139.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0140.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/normal/normal_0141.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0142.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0144.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/normal/normal_0145.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/normal/normal_0147.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/normal/normal_0148.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0000.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0001.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0002.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0003.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0004.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0006.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0007.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0008.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0009.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0011.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0013.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0016.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0018.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0019.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0021.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0022.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0023.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0024.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0025.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0027.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0028.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0029.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0032.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0034.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0035.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0036.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0037.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0038.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0041.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0042.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0043.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0044.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0045.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0046.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0049.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0050.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0051.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0052.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0054.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0056.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0057.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0058.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0059.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0061.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0062.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0063.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0064.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0065.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0067.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0068.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0069.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0070.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0071.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0073.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0077.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0078.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0081.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0082.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0083.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0086.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0087.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0088.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0089.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0090.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0092.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0093.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0094.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0095.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0096.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0097.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0098.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0099.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0100.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0101.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0102.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0104.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0105.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0106.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0107.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0108.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0109.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0110.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0114.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0115.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0116.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0117.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0118.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0119.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0121.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0123.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0125.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0126.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0129.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0132.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0133.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0134.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0137.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0140.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "train/oily/oily_0142.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0143.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0144.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "train/oily/oily_0146.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0147.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "train/oily/oily_0148.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "train/oily/oily_0149.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "val/dry/dry_0005.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "val/dry/dry_0011.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "val/dry/dry_0012.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "val/dry/dry_0013.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "val/dry/dry_0019.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "val/dry/dry_0020.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/dry/dry_0027.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "val/dry/dry_0033.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/dry/dry_0043.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "val/dry/dry_0044.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "val/dry/dry_0045.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "val/dry/dry_0048.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/dry/dry_0054.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "val/dry/dry_0077.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "val/dry/dry_0089.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "val/dry/dry_0097.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/dry/dry_0103.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "val/dry/dry_0121.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "val/dry/dry_0125.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "val/dry/dry_0126.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/dry/dry_0140.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "val/dry/dry_0144.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0008.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0010.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0016.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0021.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0033.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0054.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0060.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0062.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0068.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0070.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0072.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "val/normal/normal_0077.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0084.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0093.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0097.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0098.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0104.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0112.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0114.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0121.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0123.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/normal/normal_0149.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/oily/oily_0005.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "val/oily/oily_0010.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "val/oily/oily_0026.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "val/oily/oily_0031.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "val/oily/oily_0033.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "val/oily/oily_0053.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/oily/oily_0066.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/oily/oily_0072.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/oily/oily_0074.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "val/oily/oily_0076.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/oily/oily_0079.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "val/oily/oily_0084.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/oily/oily_0085.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "val/oily/oily_0091.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "val/oily/oily_0111.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "val/oily/oily_0112.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "val/oily/oily_0113.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "val/oily/oily_0120.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "val/oily/oily_0124.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "val/oily/oily_0127.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "val/oily/oily_0136.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "val/oily/oily_0139.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "test/dry/dry_0001.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "test/dry/dry_0006.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "test/dry/dry_0007.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "test/dry/dry_0008.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "test/dry/dry_0022.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "test/dry/dry_0023.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "test/dry/dry_0026.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "test/dry/dry_0028.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/dry/dry_0035.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "test/dry/dry_0050.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/dry/dry_0055.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "test/dry/dry_0056.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "test/dry/dry_0057.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "test/dry/dry_0059.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "test/dry/dry_0062.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "test/dry/dry_0070.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "test/dry/dry_0071.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "test/dry/dry_0107.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "test/dry/dry_0108.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "test/dry/dry_0114.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      1,
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "test/dry/dry_0129.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/dry/dry_0139.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/dry/dry_0148.jpg": {
+    "skin_type": "dry",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "test/normal/normal_0000.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0004.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0014.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0027.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0028.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0039.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0041.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0045.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0050.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0061.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "test/normal/normal_0067.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0076.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0078.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0082.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0092.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0095.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0125.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "test/normal/normal_0128.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0129.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0135.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0138.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0143.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/normal/normal_0146.jpg": {
+    "skin_type": "normal",
+    "issues": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  "test/oily/oily_0012.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0014.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "test/oily/oily_0015.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0017.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "test/oily/oily_0020.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/oily/oily_0030.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "test/oily/oily_0039.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  "test/oily/oily_0040.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0047.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0048.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0055.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "test/oily/oily_0060.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "test/oily/oily_0075.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0080.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0103.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "test/oily/oily_0122.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0128.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0130.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0131.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0135.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "test/oily/oily_0138.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  "test/oily/oily_0141.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "test/oily/oily_0145.jpg": {
+    "skin_type": "oily",
+    "issues": [
+      1,
+      0,
+      0,
+      1,
+      1
+    ]
+  }
+}

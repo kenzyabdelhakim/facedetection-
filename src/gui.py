@@ -16,7 +16,7 @@ import torch
 from PIL import Image, ImageTk
 from torchvision import transforms
 
-from model import create_multitask_vit, SKIN_TYPES, SKIN_ISSUES
+from model import load_multitask_vit, SKIN_TYPES, SKIN_ISSUES
 
 # ── Paths ────────────────────────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent
@@ -55,17 +55,9 @@ TRANSFORM = transforms.Compose([
 class SkinClassifier:
     def __init__(self, checkpoint_path: Path, device: str = "cpu"):
         self.device = device
-        ckpt = torch.load(checkpoint_path, map_location=device)
-        self.skin_types = ckpt["skin_types"]
-        self.skin_issues = ckpt["skin_issues"]
-        self.image_size = ckpt.get("image_size", 224)
-        self.model = create_multitask_vit(
-            model_name=ckpt["model_name"],
-            skin_types=self.skin_types,
-            skin_issues=self.skin_issues,
+        self.model, self.skin_types, self.skin_issues, self.image_size = (
+            load_multitask_vit(str(checkpoint_path), device)
         )
-        self.model.load_state_dict(ckpt["model_state_dict"])
-        self.model.to(device).eval()
 
     @torch.no_grad()
     def predict(self, pil_image: Image.Image):

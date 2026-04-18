@@ -21,7 +21,7 @@ import torch
 from PIL import Image
 from torchvision import transforms
 
-from model import MultiTaskViT, create_multitask_vit
+from model import MultiTaskViT, load_multitask_vit
 
 
 TRANSFORM = transforms.Compose([
@@ -35,19 +35,7 @@ TRANSFORM = transforms.Compose([
 #  Checkpoint loading
 # ═══════════════════════════════════════════════════════════════════════════
 def load_checkpoint(checkpoint_path: Path, device: str = "cpu"):
-    ckpt = torch.load(checkpoint_path, map_location=device)
-    skin_types = ckpt["skin_types"]
-    skin_issues = ckpt["skin_issues"]
-    image_size = ckpt.get("image_size", 224)
-
-    model = create_multitask_vit(
-        model_name=ckpt["model_name"],
-        skin_types=skin_types,
-        skin_issues=skin_issues,
-    )
-    model.load_state_dict(ckpt["model_state_dict"])
-    model.to(device).eval()
-    return model, skin_types, skin_issues, image_size
+    return load_multitask_vit(str(checkpoint_path), device)
 
 
 # ═══════════════════════════════════════════════════════════════════════════

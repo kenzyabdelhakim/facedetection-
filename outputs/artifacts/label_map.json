@@ -1,5 +1,14 @@
 {
-  "0": "dry",
-  "1": "normal",
-  "2": "oily"
+  "skin_types": [
+    "dry",
+    "normal",
+    "oily"
+  ],
+  "skin_issues": [
+    "acne",
+    "dark_spots",
+    "wrinkles",
+    "redness",
+    "large_pores"
+  ]
 }

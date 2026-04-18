@@ -2,7 +2,7 @@ from typing import Dict, List, Tuple
 
 import torch
 import torch.nn as nn
-from transformers import ViTModel
+from transformers import ViTModel, ViTConfig
 
 
 SKIN_TYPES = ["dry", "normal", "oily"]
@@ -19,16 +19,15 @@ class MultiTaskViT(nn.Module):
 
     def __init__(
         self,
-        model_name: str = "google/vit-base-patch16-224",
+        backbone,
         skin_types: List[str] = None,
         skin_issues: List[str] = None,
     ):
         super().__init__()
         self.skin_types = skin_types or SKIN_TYPES
         self.skin_issues = skin_issues or SKIN_ISSUES
-
-        self.backbone = ViTModel.from_pretrained(model_name)
-        hidden = self.backbone.config.hidden_size  # 768 for base
+        self.backbone = backbone
+        hidden = self.backbone.config.hidden_size
 
         self.type_head = nn.Sequential(
             nn.Dropout(0.1),
@@ -52,11 +51,39 @@ def create_multitask_vit(
     skin_types: List[str] = None,
     skin_issues: List[str] = None,
 ) -> MultiTaskViT:
+    """Create a new MultiTaskViT with a pretrained backbone (for training)."""
+    backbone = ViTModel.from_pretrained(model_name)
     return MultiTaskViT(
-        model_name=model_name,
+        backbone=backbone,
         skin_types=skin_types,
         skin_issues=skin_issues,
     )
+
+
+def load_multitask_vit(
+    checkpoint_path: str,
+    device: str = "cpu",
+) -> Tuple[MultiTaskViT, List[str], List[str], int]:
+    """
+    Load a trained MultiTaskViT from checkpoint WITHOUT downloading
+    the base model again.  The ViT config is stored inside the checkpoint,
+    so this works fully offline and loads in ~2 seconds.
+    """
+    ckpt = torch.load(checkpoint_path, map_location=device)
+    skin_types = ckpt["skin_types"]
+    skin_issues = ckpt["skin_issues"]
+    image_size = ckpt.get("image_size", 224)
+
+    if "vit_config" in ckpt:
+        config = ViTConfig(**ckpt["vit_config"])
+    else:
+        config = ViTConfig.from_pretrained(ckpt.get("model_name", "google/vit-base-patch16-224"))
+
+    backbone = ViTModel(config)
+    model = MultiTaskViT(backbone, skin_types, skin_issues)
+    model.load_state_dict(ckpt["model_state_dict"])
+    model.to(device).eval()
+    return model, skin_types, skin_issues, image_size
 
 
 def model_summary(model: nn.Module) -> Tuple[int, int]:

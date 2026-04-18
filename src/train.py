@@ -119,8 +119,8 @@ def run_epoch(
             total_loss += loss.item() * images.size(0)
             type_true.extend(type_labels.cpu().tolist())
             type_pred.extend(type_logits.argmax(dim=1).cpu().tolist())
-            issue_true.append(issue_labels.cpu().numpy())
-            issue_scores.append(torch.sigmoid(issue_logits).cpu().numpy())
+            issue_true.append(issue_labels.detach().cpu().numpy())
+            issue_scores.append(torch.sigmoid(issue_logits).detach().cpu().numpy())
 
     n = len(loader.dataset)
     issue_true_arr = np.vstack(issue_true)
@@ -283,6 +283,7 @@ def main():
                 "skin_issues": skin_issues,
                 "model_name": args.model_name,
                 "image_size": args.image_size,
+                "vit_config": model.backbone.config.to_dict(),
             }, best_path)
 
     plot_training_curves(history, eval_dir / "training_curves.png")
@@ -307,6 +308,7 @@ def main():
         "skin_issues": skin_issues,
         "model_name": args.model_name,
         "image_size": args.image_size,
+        "vit_config": model.backbone.config.to_dict(),
     }, final_path)
     print(f"Model saved: {final_path}")
 
