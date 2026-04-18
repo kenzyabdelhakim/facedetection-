@@ -97,14 +97,17 @@ LCDWIKI_TOUCH touch(53, 52, 50, 51, 44);
 // ── Touch config ───────────────────────────────────────────────────────
 const int16_t  TOUCH_NUDGE_X       = 0;
 const int16_t  TOUCH_NUDGE_Y       = 0;
-const int      TOUCH_PAD           = 14;
-const uint8_t  TOUCH_SAMPLES       = 10;
-const uint8_t  TOUCH_SAMPLE_DELAY  = 2;
-const uint8_t  TOUCH_MIN_GOOD      = 3;
+const int      TOUCH_PAD           = 4;    // keep tight to prevent overlap
+const uint8_t  TOUCH_SAMPLES       = 12;
+const uint8_t  TOUCH_SAMPLE_DELAY  = 3;
+const uint8_t  TOUCH_MIN_GOOD      = 4;
 const uint8_t  TOUCH_ROTATION      = 3;
 bool           TOUCH_SWAP_XY       = false;
 bool           TOUCH_INVERT_X      = false;
 bool           TOUCH_INVERT_Y      = false;
+
+unsigned long  lastTouchMs         = 0;
+const unsigned long DEBOUNCE_MS    = 300;  // ignore taps within this window
 
 // ── Screen state ───────────────────────────────────────────────────────
 enum Screen {
@@ -383,20 +386,28 @@ void drawWelcomeScreen() {
 }
 
 // Screen 1: Main menu
+// Button Y positions: 100, 190, 280  (90px apart, 55px tall = 35px clear gap)
+#define MAIN_BTN_X   35
+#define MAIN_BTN_W  250
+#define MAIN_BTN_H   55
+#define MAIN_BTN1_Y 100
+#define MAIN_BTN2_Y 190
+#define MAIN_BTN3_Y 280
+
 void drawMainMenu() {
     lcd.Fill_Screen(C_BG);
     drawHeader("Main Menu");
-    drawCard(18, 56, 302, 440, C_PANEL, C_BORDER);
+    drawCard(18, 56, 302, 450, C_PANEL, C_BORDER);
 
-    drawLabel(52, 72, "Choose an option:", 2, C_TEXT, C_PANEL);
+    drawLabel(52, 68, "Choose an option:", 2, C_TEXT, C_PANEL);
 
-    drawButton(35, 110, 250, 55, C_GREEN,  C_BORDER, C_WHITE, "Scan My Skin");
-    drawButton(35, 180, 250, 55, C_BLUE,   C_BORDER, C_WHITE, "Pick Product");
-    drawButton(35, 250, 250, 55, C_YELLOW, C_BORDER, C_NAVY,  "Take All (Auto)");
+    drawButton(MAIN_BTN_X, MAIN_BTN1_Y, MAIN_BTN_W, MAIN_BTN_H, C_GREEN,  C_BORDER, C_WHITE, "Scan My Skin");
+    drawButton(MAIN_BTN_X, MAIN_BTN2_Y, MAIN_BTN_W, MAIN_BTN_H, C_BLUE,   C_BORDER, C_WHITE, "Pick Product");
+    drawButton(MAIN_BTN_X, MAIN_BTN3_Y, MAIN_BTN_W, MAIN_BTN_H, C_YELLOW, C_BORDER, C_NAVY,  "Take All (Auto)");
 
-    drawLabel(38, 330, "Scan: camera analyzes your skin", 1, C_TEXT, C_PANEL);
-    drawLabel(38, 348, "Pick: choose a specific product", 1, C_TEXT, C_PANEL);
-    drawLabel(38, 366, "Auto: dispense default set", 1, C_TEXT, C_PANEL);
+    drawLabel(38, 360, "Scan: AI skin analysis", 1, C_TEXT, C_PANEL);
+    drawLabel(38, 378, "Pick: choose a product", 1, C_TEXT, C_PANEL);
+    drawLabel(38, 396, "Auto: dispense default set", 1, C_TEXT, C_PANEL);
 }
 
 // Screen 2: Scanning (waiting for Python result)
@@ -448,8 +459,8 @@ void drawResultScreen() {
     String recText = String(buf) + " of 4";
     drawLabel(200, 270, recText.c_str(), 1, C_NAVY, C_PANEL);
 
-    drawButton(35, 325, 250, 50, C_GREEN, C_BORDER, C_WHITE, "See Products");
-    drawButton(35, 390, 250, 50, C_SKY,   C_BORDER, C_NAVY,  "Back to Menu");
+    drawButton(35, 320, 250, 50, C_GREEN, C_BORDER, C_WHITE, "See Products");
+    drawButton(35, 400, 250, 50, C_SKY,   C_BORDER, C_NAVY,  "Back to Menu");
 }
 
 // Screen 4: Recommendation screen
@@ -480,24 +491,31 @@ void drawRecommendScreen() {
 }
 
 // Screen 5: Select individual product
+// 4 buttons: y = 100, 175, 250, 325 (75px apart, 50px tall = 25px gap)
+#define SEL_BTN_X   35
+#define SEL_BTN_W  250
+#define SEL_BTN_H   50
+#define SEL_BTN_SPACING 75
+#define SEL_BTN_Y0 100
+
 void drawSelectScreen() {
     lcd.Fill_Screen(C_BG);
     drawHeader("Select Product");
-    drawCard(18, 56, 302, 430, C_PANEL, C_BORDER);
+    drawCard(18, 56, 302, 460, C_PANEL, C_BORDER);
 
-    drawLabel(40, 72, "Tap to dispense:", 2, C_TEXT, C_PANEL);
+    drawLabel(40, 68, "Tap to dispense:", 2, C_TEXT, C_PANEL);
 
     uint16_t btnColors[4] = {C_GREEN, C_BLUE, C_PURPLE, C_YELLOW};
     uint16_t txtColors[4] = {C_WHITE, C_WHITE, C_WHITE, C_NAVY};
 
     for (uint8_t i = 0; i < NUM_PRODUCTS; i++) {
-        int y = 108 + i * 68;
+        int y = SEL_BTN_Y0 + i * SEL_BTN_SPACING;
         String label = String(PRODUCT_NAMES[i]);
         if (recommended[i]) label += " *";
-        drawButton(35, y, 250, 55, btnColors[i], C_BORDER, txtColors[i], label.c_str());
+        drawButton(SEL_BTN_X, y, SEL_BTN_W, SEL_BTN_H, btnColors[i], C_BORDER, txtColors[i], label.c_str());
     }
 
-    drawSmallButton(110, 390, 100, 28, C_RED, C_BORDER, C_WHITE, "BACK");
+    drawSmallButton(110, 420, 100, 30, C_RED, C_BORDER, C_WHITE, "BACK");
 }
 
 // Screen 6: Dispensing animation
@@ -543,6 +561,9 @@ String formatIssue(const String& raw) {
 // ── Touch reading ──────────────────────────────────────────────────────
 
 bool readTouch() {
+    // Debounce: ignore taps too close together
+    if (millis() - lastTouchMs < DEBOUNCE_MS) return false;
+
     touch.TP_Scan(0);
     if (!(touch.TP_Get_State() & TP_PRES_DOWN)) return false;
 
@@ -568,6 +589,7 @@ bool readTouch() {
 
     px = constrain(tx, 0, LCD_W);
     py = constrain(ty, 0, LCD_H);
+    lastTouchMs = millis();
     return true;
 }
 
@@ -577,9 +599,14 @@ bool hit(int x1, int y1, int x2, int y2) {
 }
 
 void waitRelease() {
-    delay(120);
-    do { touch.TP_Scan(0); } while (touch.TP_Get_State() & TP_PRES_DOWN);
-    delay(60);
+    delay(150);
+    unsigned long t0 = millis();
+    do {
+        touch.TP_Scan(0);
+        if (millis() - t0 > 2000) break; // safety timeout
+    } while (touch.TP_Get_State() & TP_PRES_DOWN);
+    delay(100);
+    lastTouchMs = millis(); // reset debounce after release
 }
 
 void flash(int x1, int y1, int x2, int y2) {
@@ -645,20 +672,20 @@ void loop() {
         break;
 
     // ── Main Menu ──────────────────────────────────────────────────
-    case SCR_MAIN:
+    case SCR_MAIN: {
+        int bx2 = MAIN_BTN_X + MAIN_BTN_W;
         // Scan My Skin
-        if (hit(35, 110, 285, 165)) {
-            flash(35, 110, 285, 165);
+        if (hit(MAIN_BTN_X, MAIN_BTN1_Y, bx2, MAIN_BTN1_Y + MAIN_BTN_H)) {
+            flash(MAIN_BTN_X, MAIN_BTN1_Y, bx2, MAIN_BTN1_Y + MAIN_BTN_H);
             currentScreen = SCR_SCANNING;
             drawScanningScreen();
-            Serial.println("REQ:SCAN");   // tell Python to capture + classify
+            Serial.println("REQ:SCAN");
             waitRelease();
         }
         // Pick Product
-        else if (hit(35, 180, 285, 235)) {
-            flash(35, 180, 285, 235);
+        else if (hit(MAIN_BTN_X, MAIN_BTN2_Y, bx2, MAIN_BTN2_Y + MAIN_BTN_H)) {
+            flash(MAIN_BTN_X, MAIN_BTN2_Y, bx2, MAIN_BTN2_Y + MAIN_BTN_H);
             currentScreen = SCR_SELECT;
-            // Default: recommend all if no scan done yet
             if (skinType == "") {
                 for (uint8_t i = 0; i < NUM_PRODUCTS; i++) recommended[i] = true;
                 recommendCount = NUM_PRODUCTS;
@@ -667,14 +694,14 @@ void loop() {
             waitRelease();
         }
         // Take All (Auto)
-        else if (hit(35, 250, 285, 305)) {
-            flash(35, 250, 285, 305);
-            // Dispense all 4 products
+        else if (hit(MAIN_BTN_X, MAIN_BTN3_Y, bx2, MAIN_BTN3_Y + MAIN_BTN_H)) {
+            flash(MAIN_BTN_X, MAIN_BTN3_Y, bx2, MAIN_BTN3_Y + MAIN_BTN_H);
             for (uint8_t i = 0; i < NUM_PRODUCTS; i++) recommended[i] = true;
             dispenseAllRecommended();
             waitRelease();
         }
         break;
+    }
 
     // ── Scanning (waiting) ─────────────────────────────────────────
     case SCR_SCANNING:
@@ -690,15 +717,15 @@ void loop() {
     // ── Result ─────────────────────────────────────────────────────
     case SCR_RESULT:
         // See Products
-        if (hit(35, 325, 285, 375)) {
-            flash(35, 325, 285, 375);
+        if (hit(35, 320, 285, 370)) {
+            flash(35, 320, 285, 370);
             currentScreen = SCR_RECOMMEND;
             drawRecommendScreen();
             waitRelease();
         }
         // Back to Menu
-        else if (hit(35, 390, 285, 440)) {
-            flash(35, 390, 285, 440);
+        else if (hit(35, 400, 285, 450)) {
+            flash(35, 400, 285, 450);
             currentScreen = SCR_MAIN;
             drawMainMenu();
             waitRelease();
@@ -730,26 +757,29 @@ void loop() {
         break;
 
     // ── Select individual product ──────────────────────────────────
-    case SCR_SELECT:
+    case SCR_SELECT: {
+        bool handled = false;
         for (uint8_t i = 0; i < NUM_PRODUCTS; i++) {
-            int y1 = 108 + i * 68;
-            int y2 = y1 + 55;
-            if (hit(35, y1, 285, y2)) {
-                flash(35, y1, 285, y2);
+            int y1 = SEL_BTN_Y0 + i * SEL_BTN_SPACING;
+            int y2 = y1 + SEL_BTN_H;
+            if (hit(SEL_BTN_X, y1, SEL_BTN_X + SEL_BTN_W, y2)) {
+                flash(SEL_BTN_X, y1, SEL_BTN_X + SEL_BTN_W, y2);
                 dispenseSingleProduct(i);
                 waitRelease();
+                handled = true;
                 break;
             }
         }
         // Back
-        if (hit(110, 390, 210, 418)) {
-            flash(110, 390, 210, 418);
+        if (!handled && hit(110, 420, 210, 450)) {
+            flash(110, 420, 210, 450);
             currentScreen = (skinType.length() > 0) ? SCR_RECOMMEND : SCR_MAIN;
             if (currentScreen == SCR_RECOMMEND) drawRecommendScreen();
             else drawMainMenu();
             waitRelease();
         }
         break;
+    }
 
     case SCR_DISPENSING:
         // No touch during dispensing — motor is running
